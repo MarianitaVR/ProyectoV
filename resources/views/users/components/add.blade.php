@@ -13,9 +13,6 @@
         <form action="{{ route('users.store') }}" method="POST" class="form d-flex flex-column flex-lg-row">
             @csrf
             <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                <a href="{{ route('users.index') }}" class="btn btn-danger">
-                    <span class="indicator-label">Volver atrás</span>
-                </a>
                 <div class="d-flex flex-column gap-7 gap-lg-10">
                     <div class="card card-flush py-4">
                         <div class="card-header">
@@ -164,7 +161,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <a href="/users/" class="btn btn-light me-5">Cancelar</a>
+                    <a href="/users/" class="btn btn-danger me-5">Cancelar</a>
                     <button type="submit" class="btn btn-primary">
                         <span class="indicator-label">Guardar</span>
                     </button>

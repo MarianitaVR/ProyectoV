@@ -50,6 +50,7 @@
                         </div>
                         @endif
                         @endif
+
                         <div class="card card-flush">
                             <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                                 <div class="card-title">
@@ -72,7 +73,7 @@
                                             <option value="scheduled">Inactivos</option>
                                         </select>
                                     </div>
-                                    <a href="{{route('Compra.create')}}" class="btn btn-primary">Registrar Compra</a>
+                                    <a href="{{route('compra.create')}}" class="btn btn-primary">Registrar Compra</a>
                                 </div>
                             </div>
                             <div class="card-body pt-0">
@@ -164,12 +165,12 @@
 
 
                                                     <div class="menu-item px-3">
-                                                        <a href="{{route('Compra.edit', $compra->idCompra)}}" class="menu-link px-3">Editar</a>
+                                                        <a href="{{route('compra.edit', $compra->idCompra)}}" class="menu-link px-3">Editar</a>
                                                     </div>
                                                     <div class="menu-item px-3">
 
 
-                                                        <form action="{{ route('Compra.destroy', $compra->idCompra)}}" method="post">
+                                                        <form action="{{ route('compra.destroy', $compra->idCompra)}}" method="post">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button class="btn btn-primary " style="background-color: #00147B;" type="submit" title="Eliminar">Eliminar</button>

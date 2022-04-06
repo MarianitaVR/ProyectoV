@@ -15,7 +15,7 @@
         <!-- Codigo de formulario para el registro -->
         <div class="post d-flex flex-column-fluid" id="kt_post">
           <div id="kt_content_container" class="container-xxl">
-            <form action="{{ route('Compra.update',$compra->idCompra)}}" method="post" id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
+            <form action="{{ route('compra.update',$compra->idCompra)}}" method="post" id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
               @csrf
               {{method_field('PATCH')}}
               <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -87,7 +87,7 @@
                           <div class="d-flex flex-wrap gap-5">
                             <div class="fv-row w-100 flex-md-root">
                               <div class="col-12 mb-2 text-white">
-                                <input type="button" onclick="agregar_producto(<?php echo isset($compra->idCompra) ? $compra->idCompra : 0 ?>)" id="agregarbtn" name="" value="Agregar" class="form-control btn " style="background-color:#000C79; color: white;">
+                                <input type="button" onclick="agregar_producto(<?php echo isset($compra->idCompra) ? $compra->idCompra : 0 ?>)" id="agregarbtn" name="" value="Agregar" class="form-control btn btn-success fw-bold " >
                               </div>
                             </div>
                           </div>
@@ -179,7 +179,7 @@
                   </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                  <a href="{{route('Compra.index')}}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+                  <a href="{{route('compra.index')}}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
                   <button type="submit" name="btnregistrar" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
                     <span class="indicator-label">Registrar</span>
                   </button>

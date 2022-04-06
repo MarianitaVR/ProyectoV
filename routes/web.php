@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Calendar;
+
+/*CONTROLADORES*/
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CompraController;
 
@@ -18,9 +19,7 @@ use App\Http\Controllers\CompraController;
 |
 */
 
-Route::get('/', function () {
-    return view('home.home');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 

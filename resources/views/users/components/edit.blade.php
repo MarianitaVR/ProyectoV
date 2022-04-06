@@ -14,9 +14,6 @@
             @csrf --}}
         <div class="form d-flex flex-column flex-lg-row">
             <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                <a href="{{ route('users.index') }}" class="btn btn-danger">
-                    <span class="indicator-label">Volver atrás</span>
-                </a>
                 <form action="{{ route('users.update', $user->uuid) }}" method="POST">
                     @method('PATCH')
                     @csrf

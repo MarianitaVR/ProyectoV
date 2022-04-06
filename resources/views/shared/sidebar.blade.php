@@ -110,7 +110,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Online Courses</span>
+                                <span class="menu-title">Servicios</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -118,7 +118,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Landing</span>
+                                <span class="menu-title">Reportes</span>
                             </a>
                         </div>
 

@@ -14,6 +14,11 @@ use Exception;
 
 class CompraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +47,7 @@ class CompraController extends Controller
     {
         $datos['proveedores'] = Proveedor::all();
         $datos['productos'] = Producto::all();
-        return view('Compra.registrar', $datos);
+        return view('compra.registrar', $datos);
     }
 
     /**
@@ -80,10 +85,10 @@ class CompraController extends Controller
             }
 
             DB::commit();
-            return redirect("/Compra")->with('status', '1');
+            return redirect("/compra")->with('status', '1');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect("/Compra")->with('status', $e->getMessage());
+            return redirect("/compra")->with('status', $e->getMessage());
         }
     }
 
@@ -116,7 +121,7 @@ class CompraController extends Controller
             ->join('productos', 'detallecompras.Producto_id', '=', 'productos.idProducto')
             ->select('*')
             ->get();
-        return view('Compra.editar', $datos);
+        return view('compra.editar', $datos);
     }
 
     /**
@@ -206,10 +211,10 @@ class CompraController extends Controller
 
 
             DB::commit();
-            return redirect("/Compra")->with('status', '1');
+            return redirect("/compra")->with('status', '1');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect("/Compra")->with('status', $e->getMessage());
+            return redirect("/compra")->with('status', $e->getMessage());
         }
     }
 
@@ -242,10 +247,10 @@ class CompraController extends Controller
             Compra::where('idCompra', $id)->delete();
 
             DB::commit();
-            return redirect("/Compra")->with('status', '1');
+            return redirect("/compra");
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect("/Compra")->with('status', $e->getMessage());
+            return redirect("/compra")->with('status', $e->getMessage());
         }
     }
 

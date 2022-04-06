@@ -65,7 +65,7 @@
                                 <option value="scheduled">Inactivos</option>
                             </select>
                         </div>
-                        <a href="{{route('Proveedor.create')}}" class="btn btn-primary">Agregar Proveedor</a>
+                        <a href="{{route('proveedor.create')}}" class="btn btn-primary">Agregar Proveedor</a>
                     </div>
                 </div>
                 <div class="card-body pt-0">
@@ -108,13 +108,13 @@
                                         data-kt-menu="true">
 
                                         <div class="menu-item px-3">
-                                            <a href="{{route('Proveedor.edit', $proveedor->idProveedor)}}"
+                                            <a href="{{route('proveedor.edit', $proveedor->idProveedor)}}"
                                                 class="menu-link px-3">Editar</a>
                                         </div>
                                         <div class="menu-item px-3">
 
 
-                                        <form action="{{ route('Proveedor.destroy', $proveedor->idProveedor)}}" method="POST">
+                                        <form action="{{ route('proveedor.destroy', $proveedor->idProveedor)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-primary " style="background-color: #00147B;" type="submit" title="Eliminar">Eliminar</button>
@@ -134,7 +134,7 @@
             <div class="padding" style="margin: 30px;">
                 <div id="kt_content_container" class="container-xxl">
                     <div class="padding" style="margin: 30px; text-align: center;">
-                    <a href="{{route('Compra.create')}}" class="btn" style="background-color:#000C79; color: white;">Agregar Compra</a>
+                    <a href="{{route('compra.create')}}" class="btn" style="background-color:#000C79; color: white;">Agregar Compra</a>
                 </div>
              </div>
 

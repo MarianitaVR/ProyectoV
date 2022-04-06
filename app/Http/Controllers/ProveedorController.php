@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Proveedor;
 
 class ProveedorController extends Controller
-{/**
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +30,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('Proveedor.registrar');
+        return view('proveedor.registrar');
     }
 
     /**
@@ -45,7 +51,7 @@ class ProveedorController extends Controller
         ]);
 
         Proveedor::create($request->all());
-        return redirect()->route('Proveedor.index');
+        return redirect()->route('proveedor.index');
     }
 
     /**
@@ -68,7 +74,7 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedor = Proveedor::find($id);
-        return view('Proveedor.editar',compact('proveedor'));
+        return view('proveedor.editar',compact('proveedor'));
     }
 
     /**
@@ -89,7 +95,7 @@ class ProveedorController extends Controller
 
         $proveedor->update();
 
-        return redirect()->route('Proveedor.index');
+        return redirect()->route('proveedor.index');
     }
 
     /**
@@ -102,7 +108,7 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->delete();
-        return redirect()->route('Proveedor.index');
+        return redirect()->route('proveedor.index');
 
     }
 }

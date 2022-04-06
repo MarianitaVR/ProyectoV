@@ -15,7 +15,7 @@
                   <!-- Codigo de formulario para el registro -->
           <div class="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
-              <form action="{{ route('Proveedor.update', $proveedor->idProveedor)}}" method="POST"  id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
+              <form action="{{ route('proveedor.update', $proveedor->idProveedor)}}" method="POST"  id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
                         @csrf
                         @method('PUT')
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -86,7 +86,7 @@
                       <!-- Bonotes -->
                     </div>
                       <div class="d-flex justify-content-end">
-                        <a href="{{route('Proveedor.index')}}" id="kt_ecommerce_add_product_cancel"
+                        <a href="{{route('proveedor.index')}}" id="kt_ecommerce_add_product_cancel"
                         class="btn btn-light me-5">Cancel</a>
                          <button type="submit" name="btnregistrar" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
                           <span class="indicator-label">Modificar</span>
