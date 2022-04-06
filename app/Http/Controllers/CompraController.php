@@ -247,7 +247,7 @@ class CompraController extends Controller
             Compra::where('idCompra', $id)->delete();
 
             DB::commit();
-            return redirect("/compra");
+            return redirect("/compra")->with('status', '1');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect("/compra")->with('status', $e->getMessage());

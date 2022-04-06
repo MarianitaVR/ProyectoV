@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Route::resource('/proveedor',ProveedorController::Class);
 
 Route::get('/compra',[CompraController::Class,'list']);
 Route::resource('/compra',CompraController::Class);
+
+Route::get('/Categoria',[CategoriaController::Class,'list']);
+Route::resource('/Categoria',CategoriaController::Class);
