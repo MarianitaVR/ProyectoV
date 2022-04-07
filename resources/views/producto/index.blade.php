@@ -1,6 +1,6 @@
 @extends('shared/head')
 
-@section('title', 'Listado de Categorías')
+@section('title', 'Listado de Productos')
 
 @section('content')
     <div class="d-flex flex-column flex-root">
@@ -9,54 +9,9 @@
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
                 @include('shared.header')
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    @include('categoria.components.navbar')
+                    @include('producto/components/navbar')
                     <div class="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" class="container-xxl">
-        <div class="post d-flex flex-column-fluid" id="kt_post">
-            <div id="kt_content_container" class="container-xxl">
-              <form action="{{ route('categoria.store')}}" method="POST"  id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row">
-                        @csrf
-                <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-                    <div class="tab-content">
-                    <div class="tab-pane fade show active" id="kt_ecommerce_add_product_general" role="tab-panel">
-                      <div class="d-flex flex-column gap-7 gap-lg-10">
-                        <div class="card card-flush py-4">
-                          <div class="card-header">
-                            <div class="card-title">
-                              <h2>Registro de Categorías</h2>
-                            </div>
-                          </div>
-                            <div class="card-body pt-0">
-                              <div class="d-flex flex-wrap gap-5">
-                                  <div class="fv-row w-100 flex-md-root">
-                                    <label class="required form-label">Descripción Categoría </label>
-                                    <br>
-                                    <br>
-                                      <input type="text" name="descripcioProducto" class="form-control mb-2" placeholder="Nombre Categoría" value="" />
-                              </div>
-                              
-                            </div>
-                            <div style="margin-top:20px;">
-                          <div class="d-flex flex-wrap gap-5">
-                            <div class="fv-row w-100 flex-md-root">
-                              <div class="col-12 mb-2 text-white">
-                                <button type="submit" name="btnregistrar" id="kt_ecommerce_add_product_submit" class="form-control btn btn-success fw-bold ">
-                                <span class="indicator-label">Registrar categoría</span>
-                                </button>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                            </div>
-                          </div>
-
-                          <br>
-                    </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
             <div class="card card-flush">
                 <div class="card-header align-items-center py-5 gap-2 gap-md-5">
                     <div class="card-title">
@@ -72,7 +27,7 @@
                                 </svg>
                             </span>
                             <input type="text" data-kt-ecommerce-product-filter="search"
-                                class="form-control form-control-solid w-250px ps-14" placeholder="Buscar Categoria" />
+                                class="form-control form-control-solid w-250px ps-14" placeholder="Buscar Producto" />
                         </div>
                     </div>
                     <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
@@ -85,24 +40,34 @@
                                 <option value="scheduled">Inactivos</option>
                             </select>
                         </div>
-                        <a href="{{route('categoria.create')}}" class="btn btn-primary">Agregar Categoria</a>
+                        <a href="{{route('producto.create')}}" class="btn btn-primary">Agregar Producto</a>
                     </div>
                 </div>
                 <div class="card-body pt-0">
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
                         <thead>
                             <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                                <th class="text-start min-w-100px">Id Categoría</th>
-                                <th class="text-start min-w-100px">Descripción Categoría </th>
+                                <th class="text-start min-w-100px">ID</th>
+                                <th class="text-start min-w-100px">NOMBRE </th>
+                                <th class="text-start min-w-100px">DESCRIPCIÓN </th>
+                                <th class="text-start min-w-100px">PRECIO </th>
+                                <th class="text-start min-w-100px">STOCK </th>
+                                <th class="text-start min-w-100px">ID CATEGORÍA </th>
+                                <th class="text-start min-w-100px">ESTADO </th>
                                 <th class="text-start min-w-100px"></th>
                             </tr>
                         </thead>
 
                         <tbody class="fw-bold text-gray-600">
-                            @foreach($categorias as $categoria)
+                            @foreach($productos as $producto)
                             <tr>
-                                <td class="text-start pe-0">{{$categoria->idCategoria}}</td>
-                                <td class="text-start pe-0">{{$categoria->descripcioProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->idProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->nombreProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->descripcionProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->precioProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->stock}}</td>
+                                <td class="text-start pe-0">{{$producto->descripcioProducto}}</td>
+                                <td class="text-start pe-0">{{$producto->estadoProducto}}</td>
 
                                 <td class="text-end">
                                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
@@ -118,14 +83,22 @@
                                     </a>
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                         data-kt-menu="true">
-                                        <form class="espacio" action="{{ route('categoria.destroy', $categoria->idCategoria)}}" method="POST">
+                                        <form class="espacio" action="" method="POST">
                                         <div class="menu-item px-3">
-                                            <a href="{{route('categoria.edit', $categoria->idCategoria)}}"
+                                            <a href=""
                                                 class="menu-link px-3">Editar</a>
                                         </div>
                                         <div class="menu-item px-3">
+                                            
 
-                                        </form>
+                                        <form action="" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-primary " style="background-color: #00147B;" type="submit" title="Eliminar">Eliminar</button>
+
+
+                                        </div>
+                                    </form>
                                     </div>
                                 </td>
                             </tr>

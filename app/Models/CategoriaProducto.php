@@ -9,6 +9,6 @@ class CategoriaProducto extends Model
 {
     protected $table = 'categoriaproducto';
     protected $primaryKey = 'idCategoria';
-    protected $fillable = ['descripcionProducto'];
+    protected $fillable = ['descripcioProducto'];
     public $timestamps = false;
 }

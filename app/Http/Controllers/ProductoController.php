@@ -3,23 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CategoriaProducto;
+use App\Models\Producto;
+use Illuminate\Support\Facades\DB;
 
-class CategoriaController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    /**
+class ProductoController extends Controller
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $categoria = CategoriaProducto::all();
-        return view('categoria.index' , ['categorias' => $categoria]);
+        $datos['productos']=DB::table('productos')
+        ->join('categoriaproducto', 'productos.idProducto', '=' , 'categoriaproducto.idCategoria')
+        ->select('productos.*','categoriaproducto.descripcioProducto')
+        ->get();
+
+        $producto = Producto::all();
+        return view('producto.index' , $datos);
     }
 
     /**
@@ -29,7 +30,12 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categoria.registrar');
+        $datos['productos']=DB::table('productos')
+        ->join('categoriaproducto', 'productos.idProducto', '=' , 'categoriaproducto.idCategoria')
+        ->select('productos.*','categoriaproducto.descripcioProducto')
+        ->get();
+
+        return view('producto.registrar',$datos);
     }
 
     /**
@@ -40,8 +46,8 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        CategoriaProducto::create($request->all());
-        return redirect()->route('categoria.index');
+        Producto::create($request->all());
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -63,10 +69,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categoria = CategoriaProducto::findOrFail($id);
-        return view('categoria.editar',compact('categoria'));
     }
-    
 
     /**
      * Update the specified resource in storage.
@@ -77,12 +80,6 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categoria = CategoriaProducto::findOrFail($id);
-        $categoria->descripcioProducto = $request->descripcioProducto;
-
-        $categoria->update();
-
-        return redirect()->route('categoria.index');
     }
 
     /**
@@ -93,6 +90,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-
+    
     }
 }
