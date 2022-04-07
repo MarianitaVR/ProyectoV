@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\CategoriaProducto;
 use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
@@ -19,7 +20,6 @@ class ProductoController extends Controller
         ->select('productos.*','categoriaproducto.descripcioProducto')
         ->get();
 
-        $producto = Producto::all();
         return view('producto.index' , $datos);
     }
 
@@ -30,12 +30,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $datos['productos']=DB::table('productos')
-        ->join('categoriaproducto', 'productos.idProducto', '=' , 'categoriaproducto.idCategoria')
-        ->select('productos.*','categoriaproducto.descripcioProducto')
-        ->get();
 
-        return view('producto.registrar',$datos);
+        $datos['categoriaproductos'] = CategoriaProducto::all();
+
+        return view('producto.registrar', $datos);
     }
 
     /**
@@ -69,6 +67,8 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        $producto = Producto::findOrFail($id);
+        return view('producto.editar',compact('producto'));
     }
 
     /**
@@ -80,6 +80,17 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $producto = Producto::findOrFail($id);
+        $producto->nombreProducto = $request->nombreProducto;
+        $producto->descripcionProducto = $request->descripcionProducto;
+        $producto->precioProducto = $request->precioProducto;
+        $producto->stock = $request->stock;
+        $producto->estadoProducto = $request->estadoProducto;
+
+        $producto->update();
+
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -90,6 +101,6 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-    
+
     }
 }

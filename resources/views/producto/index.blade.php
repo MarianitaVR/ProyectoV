@@ -85,11 +85,11 @@
                                         data-kt-menu="true">
                                         <form class="espacio" action="" method="POST">
                                         <div class="menu-item px-3">
-                                            <a href=""
+                                            <a href="{{route('producto.edit', $producto->idProducto)}}"
                                                 class="menu-link px-3">Editar</a>
                                         </div>
                                         <div class="menu-item px-3">
-                                            
+
 
                                         <form action="" method="POST">
                                         @csrf
