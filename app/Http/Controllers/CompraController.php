@@ -75,13 +75,10 @@ class CompraController extends Controller
                     "cantidadProducto" => $input["cantidades"][$key],
                     "precioProducto" => ($P->precioProducto * $input["cantidades"][$key]),
                     "Compra_id" => $compra,
-                    "Producto_id" => $producto
+                    "Producto_id" => $producto,
+                    $P->update(["stock" => $P->stock + $input["cantidades"][$key]])
                 ]);
-                if ($P->stock > $input["cantidades"][$key]) {
-                    $P->update(["stock" => $P->stock - $input["cantidades"][$key]]);
-                } else {
-                    throw new Exception('Cantidad excedida.');
-                }
+                
             }
 
             DB::commit();
@@ -239,7 +236,7 @@ class CompraController extends Controller
 
             foreach ($Ds as $D) {
                 $P = Producto::find($D->Producto_id);
-                $P->update(["stock" => $P->stock + $D->cantidadProducto]);
+                $P->update(["stock" => $P->stock - $D->cantidadProducto]);
                 DetalleCompra::where('idDetalleCompra', $D->idDetalleCompra)->delete();
             }
 
