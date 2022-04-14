@@ -79,7 +79,7 @@
                                         <div class="badge badge-light-danger fw-bolder">Deshabilitado</div>
                                     @endif</td>
 
-                                <td class="text-end">
+                                    <td class="text-end">
                                     <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
                                         <span class="svg-icon svg-icon-5 m-0">
@@ -95,8 +95,7 @@
                                         data-kt-menu="true">
 
                                         <div class="menu-item px-3">
-                                            <a href="{{route('proveedor.edit', $proveedor->idProveedor)}}"
-                                                class="menu-link px-3">Editar</a>
+                                            <a href="{{route('proveedor.edit', $proveedor->idProveedor)}}"><button class="btn btn-primary " style="background-color: #00147B; margin-bottom:10px; width: 100px;" type="submit">Editar</button></a>
                                         </div>
                                         <div class="menu-item px-3">
 
@@ -104,7 +103,7 @@
                                         <form action="{{ route('proveedor.destroy', $proveedor->idProveedor)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-primary " style="background-color: #00147B;" type="submit" title="Eliminar">Eliminar</button>
+                                        <button class="btn btn-primary " style="background-color: #860000" type="submit" title="Eliminar">Eliminar</button>
 
 
                                         </div>

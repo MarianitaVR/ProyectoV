@@ -31,19 +31,25 @@
                               <div class="d-flex flex-wrap gap-5">
                                 <div class="fv-row w-100 flex-md-root">
                                   <label class="required form-label">Nombre Proveedor</label>
-                                    <input type="text" name="nombreProveedor" class="form-control mb-2" placeholder="Nombre completo" value="" />
+                                    <input type="text" name="nombreProveedor" class="form-control mb-2" placeholder="Nombre completo" value="{{old('nombreProveedor')}}" />
                                     @error('nombreProveedor')
                                 <small>*{{$message}}</small>
                                     @enderror
                                 </div>
                                   <div class="fv-row w-100 flex-md-root">
                                     <label class="required form-label">Telefono</label>
-                                      <input type="text" name="telefonoProveedor" class="form-control mb-2" placeholder="Telefono / celular" value="" />
+                                      <input type="text" name="telefonoProveedor" class="form-control mb-2" placeholder="Telefono / celular" value="{{old('telefonoProveedor')}}" />
+                                      @error('telefonoProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
                                   </div>
                                   <div class="fv-row w-100 flex-md-root">
                                       <label class="required form-label">Correo electronico</label>
                                         <input type="text" name="correoProveedor" class="form-control mb-2"
-                                                    placeholder="Correo electronico" value="" />
+                                                    placeholder="Correo electronico" value="{{old('correoProveedor')}}" />
+                                                    @error('correoProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
                                   </div>
 
                               </div>
@@ -53,13 +59,15 @@
                                   <div class="fv-row w-100 flex-md-root">
                                     <label class="required form-label">Dirección</label>
                                     <input type="text" name="direccionProveedor" class="form-control mb-2"
-                                                    placeholder="Nombre completo" value="" />
+                                                    placeholder="Nombre completo" value="{{old('direccionProveedor')}}" />
+                                                    @error('direccionProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
                                   </div>
                                     <div class="fv-row w-100 flex-md-root">
                                       <label class="required form-label">Estado Proveedor</label>
                                         <select class="form-select mb-2" name="estadoProveedor" data-control="select2"
                                                     data-hide-search="true" data-placeholder="Seleciona un estado">
-                                          <option></option>
                                           <option value="1">Activo</option>
                                           <option value="2">Inactivo</option>
                                         </select>

@@ -33,18 +33,29 @@
 
                                 <div class="fv-row w-100 flex-md-root">
                                   <label class="required form-label">Nombre Proveedor</label>
-                                    <input type="text" name="nombreProveedor" value="{{$proveedor->nombreProveedor}}" class="form-control mb-2" placeholder="Nombre completo" />
+                                    <input type="text" name="nombreProveedor" value="{{old('nombreProveedor',$proveedor->nombreProveedor)}}" class="form-control mb-2" placeholder="Nombre completo" />
+                                    @error('nombreProveedor')
+                                <small style="color:red;">*{{$message}}</small>
+                                
+                                    @enderror
                                 </div>
 
                                   <div class="fv-row w-100 flex-md-root">
                                     <label class="required form-label">Telefono</label>
-                                      <input type="text" name="telefonoProveedor" value="{{$proveedor->telefonoProveedor}}" class="form-control mb-2" placeholder="Telefono / celular" />
-                                  </div>
+                                      <input type="text" name="telefonoProveedor" value="{{old('telefonoProveedor',$proveedor->telefonoProveedor)}}" class="form-control mb-2" placeholder="Telefono / celular" />
+                                      @error('telefonoProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
+                                    </div>
 
                                   <div class="fv-row w-100 flex-md-root">
                                       <label class="required form-label">Correo electronico</label>
-                                        <input type="text" name="correoProveedor"value="{{$proveedor->correoProveedor}}" class="form-control mb-2"
-                                                    placeholder="Correo electronico" value="" />
+                                        <input type="text" name="correoProveedor"value="{{old('correoProveedor',$proveedor->correoProveedor)}}" class="form-control mb-2"
+                                                    placeholder="Correo electronico" />
+
+                                                    @error('correoProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
                                   </div>
 
                               </div>
@@ -54,7 +65,10 @@
 
                                   <div class="fv-row w-100 flex-md-root">
                                     <label class="required form-label">Dirección</label>
-                                    <input type="text" name="direccionProveedor"  value="{{$proveedor->direccionProveedor}}" class="form-control mb-2"placeholder="Nombre completo" />
+                                    <input type="text" name="direccionProveedor"  value="{{old('direccionProveedor',$proveedor->direccionProveedor)}}" class="form-control mb-2"placeholder="Nombre completo" />
+                                    @error('direccionProveedor')
+                                <small>*{{$message}}</small>
+                                    @enderror
                                   </div>
 
                                   <div class="fv-row w-100 flex-md-root">

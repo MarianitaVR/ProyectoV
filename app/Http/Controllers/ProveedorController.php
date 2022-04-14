@@ -43,10 +43,10 @@ class ProveedorController extends Controller
     {
 
         $request->validate([
-            'nombreProveedor' => 'required',
-            'telefonoProveedor' => 'required',
-            'correoProveedor' => 'required',
-            'direccionProveedor' => 'required',
+            'nombreProveedor' => 'required|max:50',
+            'telefonoProveedor' => 'required|max:20',
+            'correoProveedor' => 'required|max:40',
+            'direccionProveedor' => 'required|max:40',
             'estadoProveedor' => 'required',
         ]);
 
@@ -73,6 +73,7 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
+
         $proveedor = Proveedor::find($id);
         return view('proveedor.editar',compact('proveedor'));
     }
@@ -86,6 +87,16 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        
+        $request->validate([
+            'nombreProveedor' => 'required|max:50',
+            'telefonoProveedor' => 'required|max:20',
+            'correoProveedor' => 'required|max:40',
+            'direccionProveedor' => 'required|max:40',
+            'estadoProveedor' => 'required',
+        ]);
+
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->nombreProveedor = $request->nombreProveedor;
         $proveedor->telefonoProveedor = $request->telefonoProveedor;
